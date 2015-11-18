@@ -1,0 +1,11 @@
+#!/usr/bin/bash
+#echo $#
+if test $# -eq 0
+        then
+                echo ""
+                echo "Usage: sss HOSTNAME"
+                echo ""
+                exit 1
+        else
+		/usr/bin/screen  -t $1 /usr/bin/ssh -i ssh/id_rsa -l root $1
+fi

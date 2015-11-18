@@ -1,0 +1,17 @@
+sessionname SUN_NEW
+
+#Windows
+screen -T xterm -t dalek 0
+stuff "ssh dalek"
+screen -T xterm -t davros1 1
+stuff "ssh davros1"
+screen -T xterm -t davros2 2
+stuff "ssh davros2"
+screen -T xterm -t davros3 3
+stuff "ssh davros3"
+screen -T xterm -t earth10 4
+stuff "ssh earth10"
+screen -T xterm -t kroton3 5
+stuff "ssh kroton3"
+screen -T xterm -t leela 6
+stuff "ssh leela"

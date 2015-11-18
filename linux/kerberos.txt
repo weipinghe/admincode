@@ -1,0 +1,29 @@
+# kadmin.local
+Authenticating as principal root/admin@CDH44-SECURE-LOCAL with password.
+kadmin.local:  addprinc  cloudera/admin
+WARNING: no policy specified for cloudera/admin@CDH44-SECURE-LOCAL; defaulting to no policy
+Enter password for principal "cloudera/admin@CDH44-SECURE-LOCAL"
+
+kadmin.local:  addprinc  hive/cdh44-secure@CDH44-SECURE-LOCAL
+
+// add command
+kadmin.local:  addprinc -randkey host/cdh44-secure@CDH44-SECURE-LOCAL
+
+kadmin.local:  modprinc   -maxrenewlife 10days +allow_renewable weiping@CDH44-SECURE-LOCAL
+Principal "weiping@CDH44-SECURE-LOCAL" modified.
+
+
+kadmin.local:  listprincs
+
+Then create keytab file
+in kadmin.local
+
+kadmin.local:  xst -k hive.keytab hive/cdh44-secure@CDH44-SECURE-LOCAL host/cdh44-secure@CDH44-SECURE-LOCAL
+
+
+$ kinit -p cloudera/admin
+Password for cloudera/admin@CDH44-SECURE-LOCAL: 
+
+# klist -e -k -t /etc/hive/conf/hive.keytab
+# kinit -k -t /etc/hive/conf/hive.keytab  hive/cdh44-secure@CDH44-SECURE-LOCAL
+ 

@@ -1,0 +1,127 @@
+Change the terminal title in Linux with putty
+export PS1="\e]2;Linux\a#"
+http://www.gentoo.org/doc/en/articles/prompt-magic.xml
+
+
+Check CPU info
+     cat /proc/cpuinfo
+
+check memory
+     dmesg | grep mem
+or
+     #free -m
+
+LDAP
+     For linux ldapsearch, use "-x" means Use simple authentication instead of SASL.
+     ldapsearch -h 10.16.33.62 -x -b "ou=People,dc=corp,dc=company,dc=com" "cn=weiping"
+
+Search user group
+# ldapsearch -h 10.16.33.62 -x -b "ou=group,dc=corp,dc=company,dc=com" "cn=aaa" | grep xjia
+memberUid: xjia
+
+# ldapsearch -h 10.16.33.62 -x -b "ou=group,dc=corp,dc=company,dc=com" "cn=bbbcc1" | grep xjia
+
+
+nslookup
+     nslookup with the debug switch (nslookup -d2) where d2 for exhaustive debug.
+
+check zombie process
+     ps aux | grep " Z "
+
+sort process by mem/cpu/pid
+     Use top
+     press "M" to sort by memory usage, "N" to sort numerically by PID,
+     or "P" to go back to sorting by CPU percentage
+
+check LDAP server
+grep ^host /etc/ldap.conf
+
+check perl modules
+/home/weiping/bin/check-Perl_Mod.plx | mail weiping
+
+rpm -ivh package.rpm
+Install 'package.rpm', be verbose, show hash marks
+
+rpm -Uvh package.rpm
+Upgrade 'package.rpm', be verbose, show hash marks
+
+rpm -qf /some/file
+Check which package owns a file
+
+rpm -qpi package.rpm
+Queries 'package.rpm', lists info
+
+rpm -qpl package.rpm
+Queries 'package.rpm', lists all files
+
+rpm -qa
+Queries RPM database lists all packages installed
+
+rpm -e package-name
+Removes 'package-name' from the system (as listed by rpm -qa)
+
+
+mount cifs
+
+mount -t cifs -o username=tech/administrator //sqlserver/d$ /SQLSERVER
+
+
+mount -t cifs -o username=tech/administrator //sphinx/d$ /SPHINX
+
+
+#Remove semaphore
+for i in `ipcs -s| grep -v root | awk '{print $2}'`; do ipcrm -s $i; done
+
+
+#Remove shared memory
+for i in `ipcs -m| grep -v root | awk '{print $2}'`; do ipcrm -m $i; done
+
+ for x in `cd /etc/init.d ; ls hive*` ; do  service $x restart ; done
+ 
+nohup rsync -avuz /localuser4/* /newlocaluser4 &
+
+nohup rsync -avuz /usr1/home /mynewusr1 &
+
+
+screen -S aix
+screen -ls
+There are screens on:
+        4432.aix        (Detached)
+
+screen -r aix
+
+
+To list died company process
+ps -ef | grep -i company | awk '{ if ($3==1) print $0}'
+
+
+To kill the died company process.
+for i in `ps -ef | grep -i company | awk '{ if ($3==1) print $2}'` ; do kill -9 $i; done
+
+seach active directory on Linux
+ldapsearch -x -D tester@corp.company.com -w "company" -p 389 -h 10.15.70.12 \
+-b "ou=Enterprise,dc=corp,dc=company,dc=com" "sAMAccountName=weiping"
+
+
+
+ls -s | sort -nr | more
+
+du -k -s * | sort -nr | more
+
+find . -name core -exec rm {} \;
+
+find . -perm u=rwx,g=rwx,o=rwx | more
+
+du -s -k <dir> # show dir size
+
+grep meriem `find . -name "*.java"` | more
+
+show . file
+ echo .[!.]*
+
+wall -a msg.txt
+
+Got IP address in one line:
+ arp `hostname` | cut -d')' -f1 | cut -d'(' -f2
+
+

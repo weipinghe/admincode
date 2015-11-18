@@ -1,0 +1,159 @@
+\documentclass[11pt]{article}
+\usepackage{hyperref}
+
+%\usepackage[titles]{tocloft}
+
+%    \pagestyle{fancyplain}%
+%    \lhead{\fancyplain{left head, start chapter}{left head, normal page}}
+%    \chead{\fancyplain{center head, start chapter}{center head, normal page}}
+%    \rhead{\fancyplain{right head, start chapter}{right head, normal page}}
+%    \lfoot{\fancyplain{left foot, start chapter}{left foot, normal page}}
+%    \cfoot{\fancyplain{center foot, start chapter}{center foot, normal page}}
+%    \rfoot{\fancyplain{right foot, start chapter}{right foot, normal page}}
+
+%    \renewcommand{\headrulewidth}{1pt}
+%    \renewcommand{\footrulewidth}{3pt}
+
+\begin{document}
+
+% This is good.
+%\fancyhead[C]{\includegraphics[height=13pt]{compare1.ps}}%
+
+%\begin{figure}
+%	\centering
+%		\includegraphics[height=50pt]{compare1.ps}
+%	\caption{qewqwe}
+%	\label{fig:labs-logo}
+%\end{figure}
+
+    %\includegraphics[height=13pt]{labs-logo.ps} %
+\title{Using Screen on UNIX for Terminal Sharing}
+\author{
+Weiping He
+}
+\date{}
+
+\maketitle
+
+\section{Document Summary}
+This document describes how to screen to share terminals between users.
+
+
+\section{Introduction}
+Screen is a terminal multiplexer: it takes many different running processes and manages which of them gets displayed to the user. Think of it as a window manager for your console or terminal emulator. With screen, you can have interactive processes running on your home computer and connect to them from anywhere else to check on their progress.\\
+%
+What sorts of programs are good for running in screen?
+
+\begin{itemize}
+	\item Build source code/giant compiles;
+	\item Terminal sharing;
+	\item Log watching;	
+	\item Command line programs;
+	\item Education/demo.
+\end{itemize}
+
+\section{Requirements}
+The screen package is installed. The path is at:
+
+\begin{verbatim}/usr/bin/screen, /bin/screen, or /usr/local/bin/screen\end{verbatim}
+The Set-user-ID-on-execution permission is set by this command:
+
+\begin{verbatim}chmod +s /usr/bin/screen \end{verbatim}
+%
+The permission of $/var/run/screen $ is set to 755 by this command:
+
+\begin{verbatim}chmod 755 /var/run/screen \end{verbatim}
+%
+The above two commands need to be run as root.
+
+\section{Steps}
+\renewcommand*\theenumi{\Alph{enumi}}
+\renewcommand*\labelenumi{\theenumi)}
+\begin{enumerate}
+	\item The terminal owner starts \textbf{\textit{screen}} in a local xterm,   via this command
+	 \begin{verbatim}screen -S SessionName\end{verbatim}
+	The -S switch gives the session a name, which makes multiple screen sessions easier to manage.\\
+	For example:
+\begin{verbatim}
+rh-prague:/home/weiping> screen -S mytest
+\end{verbatim}
+
+	\item The owner allows multiuser access in the screen session via the command \textbf{\textit{Ctrl-a}} $:multiuser$ $on$ (all screen commands start with the screen escape sequence, \textbf{\textit{Ctrl-a}}).
+%
+To avoid typine this command every time, you can put the folling line into the $.screenrc$ file
+\begin{verbatim}multiuser on \end{verbatim}
+
+	\item Next the owner grants permission to the guest user to access the screen session with \textbf{\textit{Ctrl-a}} $:acladd$ $guest$ where $guest$ is the guest user login name.
+
+	\item The guest user can see the list of screen session owned by user owner by specifying
+the user whose session list is requested:
+\begin{verbatim}screen -list username/ \end{verbatim}
+For example
+\begin{verbatim}
+rh-prague:/home/tester> screen -list weiping/
+There is a suitable screen on:
+        23194.mytest    (Multi, attached)
+1 Socket in /var/run/screen/S-weiping.
+\end{verbatim}
+
+
+	\item	The guest can now connect to the owner's screen session.  The syntax to connect to another user's screen session is \begin{verbatim}screen -x username/SessionName\end{verbatim}
+	For example
+\begin{verbatim}
+rh-prague:/home/tester> screen -x weiping/mytest
+\end{verbatim}
+
+
+	\item The owner can also connect to this screen session from another terminal by using this command:
+	\begin{verbatim}screen -x username/SessionName\end{verbatim}
+	
+%	\item
+	\item The screen logging can be turned on or off at any time with \textbf{\textit{Ctrl-a H}}, or you can use the $-L$ switch when starting screen to enable it by default. The log file is written to the current directory under the name \textit{screenlog.n}, where \textit{n} is incremented by one for each new log.
+		
+\end{enumerate}
+
+\section{Common problems}
+\begin{itemize}
+	\item If you get a ``\textit{chmod /dev/pts/xx: Operation not permitted}'' error, it may be because you have \textit{su} on a tty you do not own. This does not work because you have to own the tty for \textit{screen} to work.
+	\item If you have a \textit{/tmp/uscreen} file instead of a \textit{/tmp/screen/S-xxxxxxxx} file, put \textit{multiuser on} in your \textit{.screenrc} file, and try again.
+\end{itemize}
+%\newpage
+\section{References}
+Multiple users of a terminal\\
+http://www.pixelbeat.org/docs/screen/\\ \\
+%
+Using screen for remote interaction\\
+http://www.linux.com/archive/feed/56443\\
+%
+GNU screen\\
+http://aperiodic.net/screen/multiuser
+
+
+\section{Appendix}
+\subsection{screen command tips}
+\begin{itemize}
+	\item \textbf{\textit{CTRL-a}}   gets into command mode.  like ESC in vi
+\item \textbf{\textit{CTRL-a + CTRL-a}}   cycles through the screens
+\item \textbf{\textit{CTRL-a + "}} shows list of screens.  use arrow or j/k keys to select
+\item \textbf{\textit{CTRL-a + : + quit}} closes session
+\item \textbf{\textit{CTRL-a + d}}  - exits screen but does not kill session.  It is still running in the background waiting to be reattached with "screen -r"
+\end{itemize}
+
+
+\subsection{screen command under  Ctrl-a for multiuser sharing}
+\begin{itemize}
+	\item acladd - Adds users with full permission to all windows.
+	\item aclchg - Adds users with more flexible permissions or changes the permissions on an existing user.
+	\item acldel - Removes a user from screen's knowledge.
+	\item aclgrp - Adds a user to a group or just describes user's group membership.
+	\item aclumask - Sets default permissions for windows not yet created.
+	\item defescape - Like escape, but sets the command character for all users.
+	\item defwritelock - Sets the default writelock setting for new windows.
+	\item multiuser - Enables or disables multiuser mode.
+	\item su - Operate as a different user.
+	\item writelock - Sets writelock mode for current window.
+
+\end{itemize}
+
+\end{document}
+

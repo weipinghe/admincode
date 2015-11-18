@@ -1,0 +1,16 @@
+
+http://docs.puppetlabs.com/puppet_core_types_cheatsheet.pdf
+
+client side
+[root@sap73 puppet]# puppetd --test --server prod-tech-pptm1.company.com
+
+
+puppet agent -t
+
+
+/etc/puppet/manifests/site.pp
+This file is the default location where Puppet Master looks for node definitions. Variables and resources which apply to all nodes can go here. By convention the actual node definitions are not stored here, but in nodes.pp or an external source.
+/etc/puppet/manifests/nodes.pp
+This file contains node definitions for the environment. Node definitions are enclosed in curly braces and labeled with the prefix ¡®node <FQDN>¡¯. If a node definition is not found the ¡®default¡¯ node is used.
+
+
