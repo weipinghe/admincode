@@ -1,0 +1,1848 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns:st1="urn:schemas-microsoft-com:office:smarttags"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=gb2312">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 11">
+<meta name=Originator content="Microsoft Word 11">
+<link rel=File-List href="hbase-shell.files/filelist.xml">
+<o:SmartTagType namespaceuri="urn:schemas-microsoft-com:office:smarttags"
+ name="PlaceType"/>
+<o:SmartTagType namespaceuri="urn:schemas-microsoft-com:office:smarttags"
+ name="PlaceName"/>
+<o:SmartTagType namespaceuri="urn:schemas-microsoft-com:office:smarttags"
+ name="place"/>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Microsoft</o:Author>
+  <o:LastAuthor>Microsoft</o:LastAuthor>
+  <o:Revision>2</o:Revision>
+  <o:TotalTime>1</o:TotalTime>
+  <o:Created>2016-05-18T02:29:00Z</o:Created>
+  <o:LastSaved>2016-05-18T02:30:00Z</o:LastSaved>
+  <o:Pages>1</o:Pages>
+  <o:Words>2969</o:Words>
+  <o:Characters>16927</o:Characters>
+  <o:Lines>141</o:Lines>
+  <o:Paragraphs>39</o:Paragraphs>
+  <o:CharactersWithSpaces>19857</o:CharactersWithSpaces>
+  <o:Version>11.9999</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:SpellingState>Clean</w:SpellingState>
+  <w:GrammarState>Clean</w:GrammarState>
+  <w:PunctuationKerning/>
+  <w:DrawingGridVerticalSpacing>7.8 磅</w:DrawingGridVerticalSpacing>
+  <w:DisplayHorizontalDrawingGridEvery>0</w:DisplayHorizontalDrawingGridEvery>
+  <w:DisplayVerticalDrawingGridEvery>2</w:DisplayVerticalDrawingGridEvery>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:Compatibility>
+   <w:SpaceForUL/>
+   <w:BalanceSingleByteDoubleByteWidth/>
+   <w:DoNotLeaveBackslashAlone/>
+   <w:ULTrailSpace/>
+   <w:DoNotExpandShiftReturn/>
+   <w:AdjustLineHeightInTable/>
+   <w:BreakWrappedTables/>
+   <w:SnapToGridInCell/>
+   <w:WrapTextWithPunct/>
+   <w:UseAsianBreakRules/>
+   <w:DontGrowAutofit/>
+   <w:UseFELayout/>
+  </w:Compatibility>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+ </w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" LatentStyleCount="156">
+ </w:LatentStyles>
+</xml><![endif]--><!--[if !mso]><object
+ classid="clsid:38481807-CA0E-42D2-BF39-B33AF135CC4D" id=ieooui></object>
+<style>
+st1\:*{behavior:url(#ieooui) }
+</style>
+<![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:宋体;
+	panose-1:2 1 6 0 3 1 1 1 1 1;
+	mso-font-alt:SimSun;
+	mso-font-charset:134;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:3 680460288 22 0 262145 0;}
+@font-face
+	{font-family:"\@宋体";
+	panose-1:2 1 6 0 3 1 1 1 1 1;
+	mso-font-charset:134;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:3 680460288 22 0 262145 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	mso-pagination:none;
+	font-size:10.5pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:宋体;
+	mso-font-kerning:1.0pt;}
+h1
+	{mso-margin-top-alt:auto;
+	margin-right:0cm;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	mso-outline-level:1;
+	font-size:24.0pt;
+	font-family:宋体;
+	mso-bidi-font-family:宋体;
+	font-weight:bold;}
+p
+	{mso-margin-top-alt:auto;
+	margin-right:0cm;
+	mso-margin-bottom-alt:auto;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:宋体;
+	mso-bidi-font-family:宋体;}
+span.skimlinks-unlinked
+	{mso-style-name:skimlinks-unlinked;}
+span.SpellE
+	{mso-style-name:"";
+	mso-spl-e:yes;}
+span.GramE
+	{mso-style-name:"";
+	mso-gram-e:yes;}
+ /* Page Definitions */
+ @page
+	{mso-page-border-surround-header:no;
+	mso-page-border-surround-footer:no;}
+@page Section1
+	{size:595.3pt 841.9pt;
+	margin:72.0pt 90.0pt 72.0pt 90.0pt;
+	mso-header-margin:42.55pt;
+	mso-footer-margin:49.6pt;
+	mso-paper-source:0;
+	layout-grid:15.6pt;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:普通表格;
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-para-margin:0cm;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-ansi-language:#0400;
+	mso-fareast-language:#0400;
+	mso-bidi-language:#0400;}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="2050"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body lang=ZH-CN style='tab-interval:21.0pt;text-justify-trim:punctuation'>
+
+<div class=Section1 style='layout-grid:15.6pt'>
+
+<p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+auto;text-align:left;mso-pagination:widow-orphan;mso-outline-level:1'><span
+class=SpellE><b><span lang=EN-US style='font-size:24.0pt;font-family:宋体;
+mso-bidi-font-family:宋体;mso-font-kerning:18.0pt'>HBase</span></b></span><b><span
+lang=EN-US style='font-size:24.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+mso-font-kerning:18.0pt'> shell commands<o:p></o:p></span></b></p>
+
+<p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+auto;text-align:left;mso-pagination:widow-orphan'><span class=SpellE><span
+lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+mso-font-kerning:0pt'>HBase</span></span><span lang=EN-US style='font-size:
+12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:0pt'> provides
+Extensible <span class=SpellE>jruby</span>-based (JIRB) shell as a feature to
+execute some commands(each command represents one functionality).<o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+auto;text-align:left;mso-pagination:widow-orphan'><span class=SpellE><b><span
+lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+mso-font-kerning:0pt'>HBase</span></b></span><b><span lang=EN-US
+style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+0pt'> shell commands are mainly categorized into 6 parts</span></b><span
+lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+mso-font-kerning:0pt'><o:p></o:p></span></p>
+
+<p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+auto;text-align:left;mso-pagination:widow-orphan'><b><span lang=EN-US
+style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+0pt'>1) General<span class=GramE>&nbsp; <span class=SpellE>HBase</span></span>
+shell commands</span></b><span lang=EN-US style='font-size:12.0pt;font-family:
+宋体;mso-bidi-font-family:宋体;mso-font-kerning:0pt'><o:p></o:p></span></p>
+
+<table class=MsoNormalTable border=0 cellpadding=0 style='mso-cellspacing:1.5pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>status</span></b><span lang=EN-US style='font-size:
+  12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>Show cluster status. Can be ‘summary’, ‘simple’, or
+  ‘detailed’. The<br>
+  default is ‘summary’.<o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span class=SpellE><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>hbase</span></b></span><b><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>&gt; status</span></b><span lang=EN-US style='font-size:12.0pt;
+  font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:0pt'><br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; status ‘simple’</b><br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; status ‘summary’</b><br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; status ‘detailed’</b><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:1'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>version</span></b><span lang=EN-US style='font-size:
+  12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>Output this <span class=SpellE>HBase</span> <span
+  class=SpellE>version<b>Usage</b></span><b>:</b><o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span class=SpellE><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>hbase</span></b></span><b><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>&gt; version</span></b><span lang=EN-US style='font-size:12.0pt;
+  font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:2;mso-yfti-lastrow:yes'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  class=SpellE><b><span lang=EN-US style='font-size:12.0pt;font-family:宋体;
+  mso-bidi-font-family:宋体;mso-font-kerning:0pt'>whoami</span></b></span><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>Show the current <span class=SpellE>hbase</span> <span
+  class=SpellE>user.<b>Usage</b></span><b>:</b><o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span class=SpellE><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>hbase</span></b></span><b><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>&gt; <span class=SpellE>whoami</span></span></b><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'><o:p></o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+auto;text-align:left;mso-pagination:widow-orphan'><b><span lang=EN-US
+style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+0pt'>2) Tables Management commands</span></b><span lang=EN-US style='font-size:
+12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:0pt'><o:p></o:p></span></p>
+
+<table class=MsoNormalTable border=0 cellpadding=0 width=823 style='width:617.25pt;
+ mso-cellspacing:1.5pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>alter</span></b><span lang=EN-US style='font-size:12.0pt;
+  font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>Alter column family schema; pass table name and a
+  dictionary<br>
+  specifying new column family schema. Dictionaries are described<br>
+  on the main help command output. Dictionary must include name<br>
+  of column family to <span class=SpellE>alter.For</span> example, to change or
+  add the ‘f1’ column family in table ‘t1’ from<br>
+  current value to keep a maximum of 5 cell VERSIONS, do:<o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span class=SpellE><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>hbase</span></b></span><b><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>&gt; alter ‘t1’, NAME =&gt; ‘f1’, VERSIONS =&gt; 5</span></b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'><o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>You can operate on several column families:<o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span class=SpellE><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>hbase</span></b></span><b><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>&gt; alter ‘t1’, ‘f1’, {NAME =&gt; ‘f2’, IN_MEMORY =&gt; true}, {NAME
+  =&gt; ‘f3’, VERSIONS =&gt; 5}</span></b><span lang=EN-US style='font-size:
+  12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:0pt'><o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>To delete the ‘f1’ column family in table ‘t1’, use one <span
+  class=SpellE>of:hbase</span>&gt; alter ‘t1’, NAME =&gt; ‘f1’, METHOD =&gt;
+  ‘delete’<br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; alter ‘t1’, ‘delete’ =&gt; ‘f1’</b><o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>You can also change table-scope attributes like MAX_FILESIZE, READONLY<span
+  class=GramE>,</span><br>
+  MEMSTORE_FLUSHSIZE, DEFERRED_LOG_FLUSH, etc. These can be put at the end;<br>
+  for example, to change the max size of a region to 128MB, do:<o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span class=SpellE><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>hbase</span></b></span><b><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>&gt; alter ‘t1’, MAX_FILESIZE =&gt; ‘134217728’</span></b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'><o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>You can add a table coprocessor by setting a table coprocessor
+  attribute:<o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span class=SpellE><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>hbase</span></b></span><b><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>&gt; alter ‘t1’,</span></b><span lang=EN-US style='font-size:12.0pt;
+  font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:0pt'><br>
+  <b>‘coprocessor’=&gt;’hdfs:///foo.jar|com.foo.FooRegionObserver|1001|arg1=1,arg2=2’</b><o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>Since you can have multiple coprocessors configured for a table, a<br>
+  sequence number will be automatically appended to the attribute name<br>
+  to uniquely identify it.<o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>The coprocessor attribute must match the pattern below in order for<br>
+  the framework to understand how to load the coprocessor classes:<o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>[coprocessor jar file location] | class name | [priority] | [arguments]<o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>You can also set configuration settings specific to this table or column
+  family:<o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span class=SpellE><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>hbase</span></b></span><b><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>&gt; alter ‘t1’, CONFIGURATION =&gt; {‘<span class=SpellE>hbase.hregion.scan.loadColumnFamiliesOnDemand</span>’
+  =&gt; ‘true’}</span></b><span lang=EN-US style='font-size:12.0pt;font-family:
+  宋体;mso-bidi-font-family:宋体;mso-font-kerning:0pt'><br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; alter ‘t1’, {NAME =&gt; ‘f2’,
+  CONFIGURATION =&gt; {‘<span class=SpellE>hbase.hstore.blockingStoreFiles</span>’
+  =&gt; ’10’}}</b><o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>You can also remove a table-scope attribute:<o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span class=SpellE><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>hbase</span></b></span><b><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>&gt; alter ‘t1’, METHOD =&gt; ‘<span class=SpellE>table_att_unset</span>’,
+  NAME =&gt; ‘MAX_FILESIZE’</span></b><span lang=EN-US style='font-size:12.0pt;
+  font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:0pt'><o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span class=SpellE><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>hbase</span></b></span><b><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>&gt; alter ‘t1’, METHOD =&gt; ‘<span class=SpellE>table_att_unset</span>’,
+  NAME =&gt; ‘coprocessor$1’</span></b><span lang=EN-US style='font-size:12.0pt;
+  font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:0pt'><o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>There could be more than one alteration in one command:<o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span class=SpellE><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>hbase</span></b></span><b><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>&gt; alter ‘t1’, { NAME =&gt; ‘f1’, VERSIONS =&gt; 3 },</span></b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'><br>
+  <b>{ MAX_FILESIZE =&gt; ‘134217728’ }, { METHOD =&gt; ‘delete’, NAME =&gt;
+  ‘f2’ },</b><br>
+  <b>OWNER =&gt; ‘<span class=SpellE>johndoe</span>’, METADATA =&gt; { ‘<span
+  class=SpellE>mykey</span>’ =&gt; ‘<span class=SpellE>myvalue</span>’ }</b><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:1'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>create</span></b><span lang=EN-US style='font-size:
+  12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>Create table; pass table name, a dictionary of
+  specifications per<br>
+  column family, and optionally a dictionary of table configuration.<o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span class=SpellE><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>hbase</span></b></span><b><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>&gt; create ‘t1’, {NAME =&gt; ‘f1’, VERSIONS =&gt; 5}</span></b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'><br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; create ‘t1’, {NAME =&gt; ‘f1’},
+  {NAME =&gt; ‘f2’}, {NAME =&gt; ‘f3’}</b><br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; # The above in shorthand would
+  be the following:</b><br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; create ‘t1’, ‘f1’, ‘f2’, ‘f3’</b><br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; create ‘t1’, {NAME =&gt; ‘f1’,
+  VERSIONS =&gt; 1, TTL =&gt; 2592000, BLOCKCACHE =&gt; true}</b><br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; create ‘t1’, {NAME =&gt; ‘f1’,
+  CONFIGURATION =&gt; {‘<span class=SpellE>hbase.hstore.blockingStoreFiles</span>’
+  =&gt; ’10’}}</b><o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>Table configuration options can be put at the end.<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:2'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>describe</span></b><span lang=EN-US style='font-size:
+  12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>Describe the named table.<o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span class=SpellE><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>hbase</span></b></span><b><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>&gt; describe ‘t1’</span></b><span lang=EN-US style='font-size:12.0pt;
+  font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:3'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>disable</span></b><span lang=EN-US style='font-size:
+  12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>Start disable of named table<o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span class=SpellE><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>hbase</span></b></span><b><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>&gt; disable ‘t1’</span></b><span lang=EN-US style='font-size:12.0pt;
+  font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:4'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  class=SpellE><b><span lang=EN-US style='font-size:12.0pt;font-family:宋体;
+  mso-bidi-font-family:宋体;mso-font-kerning:0pt'>disable_all</span></b></span><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>Disable all of tables matching the given <span
+  class=SpellE>regex</span><o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span class=SpellE><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>hbase</span></b></span><b><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>&gt; <span class=SpellE>disable_all</span> ‘t.*’</span></b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:5'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  class=SpellE><b><span lang=EN-US style='font-size:12.0pt;font-family:宋体;
+  mso-bidi-font-family:宋体;mso-font-kerning:0pt'>is_disabled</span></b></span><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>verifies Is named table disabled<o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span class=SpellE><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>hbase</span></b></span><b><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>&gt; <span class=SpellE>is_disabled</span> ‘t1’</span></b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:6'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>drop&nbsp;</span></b><span lang=EN-US style='font-size:
+  12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>Drop the named table. Table must first be disabled<o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span class=SpellE><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>hbase</span></b></span><b><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>&gt; drop ‘t1’</span></b><span lang=EN-US style='font-size:12.0pt;
+  font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:7'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  class=SpellE><b><span lang=EN-US style='font-size:12.0pt;font-family:宋体;
+  mso-bidi-font-family:宋体;mso-font-kerning:0pt'>drop_all</span></b></span><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>Drop all of the tables matching the given <span
+  class=SpellE>regex</span><o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span class=SpellE><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>hbase</span></b></span><b><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>&gt; <span class=SpellE>drop_all</span> ‘t.*’</span></b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:8'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>enable</span></b><span lang=EN-US style='font-size:
+  12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>Start enable of named table<o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span class=SpellE><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>hbase</span></b></span><b><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>&gt; enable ‘t1’</span></b><span lang=EN-US style='font-size:12.0pt;
+  font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:9'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  class=SpellE><b><span lang=EN-US style='font-size:12.0pt;font-family:宋体;
+  mso-bidi-font-family:宋体;mso-font-kerning:0pt'>enable_all</span></b></span><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>Enable all of the tables matching the given <span
+  class=SpellE>regex</span><o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span class=SpellE><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>hbase</span></b></span><b><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>&gt; <span class=SpellE>enable_all</span> ‘t.*’</span></b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:10'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  class=SpellE><b><span lang=EN-US style='font-size:12.0pt;font-family:宋体;
+  mso-bidi-font-family:宋体;mso-font-kerning:0pt'>is_enabled</span></b></span><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>verifies Is named table enabled<o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span class=SpellE><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>hbase</span></b></span><b><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>&gt; <span class=SpellE>is_enabled</span> ‘t1’</span></b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:11'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>exists</span></b><span lang=EN-US style='font-size:
+  12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>Does the named table exist<o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span class=SpellE><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>hbase</span></b></span><b><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>&gt; exists ‘t1’</span></b><span lang=EN-US style='font-size:12.0pt;
+  font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:12'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>list</span></b><span lang=EN-US style='font-size:12.0pt;
+  font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>List all tables in <span class=SpellE>hbase</span>.
+  Optional regular expression parameter could<br>
+  be used to filter the output<o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span class=SpellE><span
+  class=GramE><b><span lang=EN-US style='font-size:12.0pt;font-family:宋体;
+  mso-bidi-font-family:宋体;mso-font-kerning:0pt'>hbase</span></b></span></span><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>&gt; list</span></b><span lang=EN-US style='font-size:
+  12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:0pt'><br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; list ‘<span class=SpellE>abc</span>.*’</b><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:13'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  class=SpellE><b><span lang=EN-US style='font-size:12.0pt;font-family:宋体;
+  mso-bidi-font-family:宋体;mso-font-kerning:0pt'>show_filters</span></b></span><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>Show all the filters in <span class=SpellE>hbase</span>.<o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span class=SpellE><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>hbase</span></b></span><b><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>&gt; <span class=SpellE>show_filters</span></span></b><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:14'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  class=SpellE><b><span lang=EN-US style='font-size:12.0pt;font-family:宋体;
+  mso-bidi-font-family:宋体;mso-font-kerning:0pt'>alter_status</span></b></span><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>Get the status of the alter command. Indicates the
+  number of regions of the table that have received the updated <st1:place
+  w:st="on"><st1:PlaceName w:st="on">schema</st1:PlaceName> <st1:PlaceType
+   w:st="on">Pass</st1:PlaceType></st1:place> table name.<o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span class=SpellE><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>hbase</span></b></span><b><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>&gt; <span class=SpellE>alter_status</span> ‘t1’</span></b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:15;mso-yfti-lastrow:yes'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  class=SpellE><b><span lang=EN-US style='font-size:12.0pt;font-family:宋体;
+  mso-bidi-font-family:宋体;mso-font-kerning:0pt'>alter_async</span></b></span><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>Alter column family schema, does not wait for all
+  regions to receive the<br>
+  schema changes. Pass table name and a dictionary specifying new column<br>
+  family schema. Dictionaries are described on the main help command output.<br>
+  Dictionary must include name of column family to alter.<o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>To change or add the ‘f1’ column family in table ‘t1’ from defaults<br>
+  to instead keep a maximum of 5 cell VERSIONS, <span class=SpellE>do:hbase</span>&gt;
+  <span class=SpellE>alter_async</span> ‘t1’, NAME =&gt; ‘f1’, VERSIONS =&gt;
+  5To delete the ‘f1’ column family in table ‘t1’, do:<o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span class=SpellE><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>hbase</span></b></span><b><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>&gt; <span class=SpellE>alter_async</span> ‘t1’, NAME =&gt; ‘f1’, METHOD
+  =&gt; ‘<span class=SpellE>delete’or</span> a shorter <span class=SpellE>version:hbase</span>&gt;
+  <span class=SpellE>alter_async</span> ‘t1’, ‘delete’ =&gt; ‘f1’</span></b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'><o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>You can also change table-scope attributes like MAX_FILESIZE<br>
+  MEMSTORE_FLUSHSIZE, READONLY, and DEFERRED_LOG_FLUSH.<o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>For example, to change the max size of a family to 128MB, do:<o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span class=SpellE><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>hbase</span></b></span><b><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>&gt; alter ‘t1’, METHOD =&gt; ‘<span class=SpellE>table_att</span>’,
+  MAX_FILESIZE =&gt; ‘134217728’</span></b><span lang=EN-US style='font-size:
+  12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:0pt'><o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>There could be more than one alteration in one command:<o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span class=SpellE><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>hbase</span></b></span><b><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>&gt; alter ‘t1’, {NAME =&gt; ‘f1’}, {NAME =&gt; ‘f2’, METHOD =&gt;
+  ‘delete’}</span></b><span lang=EN-US style='font-size:12.0pt;font-family:
+  宋体;mso-bidi-font-family:宋体;mso-font-kerning:0pt'><o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>To check if all the regions have been updated, use <span class=SpellE>alter_status</span>
+  &lt;<span class=SpellE>table_name</span>&gt;<o:p></o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+auto;text-align:left;mso-pagination:widow-orphan'><b><span lang=EN-US
+style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+0pt'>3) Data Manipulation commands&nbsp;&nbsp;</span></b><span lang=EN-US
+style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+0pt'><o:p></o:p></span></p>
+
+<table class=MsoNormalTable border=0 cellpadding=0 style='mso-cellspacing:1.5pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>count</span></b><span lang=EN-US style='font-size:12.0pt;
+  font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>Count the number of rows in a table. Return value is
+  the number of rows.<br>
+  This operation may take a LONG time (Run ‘$HADOOP_HOME/bin/<span
+  class=SpellE>hadoop</span> jar<br>
+  <span class=SpellE>hbase.jar</span> <span class=SpellE>rowcount</span>’ to
+  run a counting <span class=SpellE>mapreduce</span> job). Current count is
+  shown<br>
+  every 1000 rows by default. Count interval may be optionally specified. Scan<br>
+  caching is enabled on count scans by default. Default cache size is 10 rows.<br>
+  If your rows are small in size, you may want to increase this<br>
+  parameter. <span class=SpellE>Examples:hbase</span>&gt; count ‘t1’<br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; count ‘t1’, INTERVAL =&gt;
+  100000</b><br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; count ‘t1’, CACHE =&gt; 1000</b><br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; count ‘t1’, INTERVAL =&gt; 10,
+  CACHE =&gt; 1000</b><o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>The same commands also can be run on a table reference. Suppose you had
+  a reference<br>
+  t to table ‘t1’, the corresponding commands would <span class=SpellE>be:hbase</span>&gt;
+  <span class=SpellE>t.count</span><br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; <span class=SpellE>t.count</span>
+  INTERVAL =&gt; 100000</b><br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; <span class=SpellE>t.count</span>
+  CACHE =&gt; 1000</b><br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; <span class=SpellE>t.count</span>
+  INTERVAL =&gt; 10, CACHE =&gt; 1000</b><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:1'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>delete</span></b><span lang=EN-US style='font-size:
+  12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>Put a delete cell value at specified table/row/column and
+  optionally<br>
+  timestamp coordinates. Deletes must match the deleted cell’s<br>
+  coordinates exactly. When scanning, a delete cell suppresses older<br>
+  versions. To delete a cell from ‘t1’ at row ‘r1’ under column ‘c1’<br>
+  marked with the time ‘ts1’, do:<o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span class=SpellE><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>hbase</span></b></span><b><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>&gt; delete ‘t1’, ‘r1’, ‘c1’, ts1</span></b><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'><o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>The same command can also be run on a table reference. Suppose you had a
+  reference<br>
+  t to table ‘t1’, the corresponding command would <span class=SpellE>be:hbase</span>&gt;
+  <span class=SpellE>t.delete</span> ‘r1’, ‘c1’, ts1<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:2'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  class=SpellE><b><span lang=EN-US style='font-size:12.0pt;font-family:宋体;
+  mso-bidi-font-family:宋体;mso-font-kerning:0pt'>deleteall</span></b></span><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>Delete all cells in a given row; pass a table name,
+  row, and optionally<br>
+  a column and timestamp. <span class=SpellE>Examples:hbase</span>&gt; <span
+  class=SpellE>deleteall</span> ‘t1’, ‘r1’<br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; <span class=SpellE>deleteall</span>
+  ‘t1’, ‘r1’, ‘c1’</b><br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; <span class=SpellE>deleteall</span>
+  ‘t1’, ‘r1’, ‘c1’, ts1</b><o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>The same commands also can be run on a table reference. Suppose you had
+  a reference<br>
+  t to table ‘t1’, the corresponding command would <span class=SpellE>be:hbase</span>&gt;
+  <span class=SpellE>t.deleteall</span> ‘r1’<br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; <span class=SpellE>t.deleteall</span>
+  ‘r1’, ‘c1’</b><br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; <span class=SpellE>t.deleteall</span>
+  ‘r1’, ‘c1’, ts1</b><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:3'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>get</span></b><span lang=EN-US style='font-size:12.0pt;
+  font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>Get row or cell contents; pass table name, row, and
+  optionally<br>
+  a dictionary of column(s), timestamp, <span class=SpellE>timerange</span> and
+  versions. Examples:<o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span class=SpellE><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>hbase</span></b></span><b><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>&gt; get ‘t1’, ‘r1’</span></b><span lang=EN-US style='font-size:12.0pt;
+  font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:0pt'><br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; get ‘t1’, ‘r1’, {TIMERANGE
+  =&gt; [ts1, ts2]}</b><br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; get ‘t1’, ‘r1’, {COLUMN =&gt;
+  ‘c1’}</b><br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; get ‘t1’, ‘r1’, {COLUMN =&gt;
+  [‘c1’, ‘c2’, ‘c3’]}</b><br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; get ‘t1’, ‘r1’, {COLUMN =&gt;
+  ‘c1’, TIMESTAMP =&gt; ts1}</b><br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; get ‘t1’, ‘r1’, {COLUMN =&gt;
+  ‘c1’, TIMERANGE =&gt; [ts1, ts2], VERSIONS =&gt; 4}</b><br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; get ‘t1’, ‘r1’, {COLUMN =&gt;
+  ‘c1’, TIMESTAMP =&gt; ts1, VERSIONS =&gt; 4}</b><br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; get ‘t1’, ‘r1’, {FILTER =&gt; “<span
+  class=SpellE>ValueFilter</span>(=, ‘<span class=SpellE>binary:abc</span>’)”}</b><br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; get ‘t1’, ‘r1’, ‘c1’</b><br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; get ‘t1’, ‘r1’, ‘c1’, ‘c2’</b><br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; get ‘t1’, ‘r1’, [‘c1’, ‘c2’]</b><o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>Besides the default ‘<span class=SpellE>toStringBinary</span>’ format,
+  ‘get’ also supports custom formatting by<br>
+  column. A user can define a FORMATTER by adding it to the column name in the
+  get<br>
+  specification. The FORMATTER can be stipulated<span class=GramE>:1</span>. <span
+  class=GramE>either</span> as a <span class=SpellE>org.apache.hadoop.hbase.util.Bytes</span>
+  method name (<span class=SpellE>e.g</span>, <span class=SpellE>toInt</span>, <span
+  class=SpellE>toString</span>)<br>
+  2. or as a custom class followed by method name: e.g. ‘c(<span class=SpellE>MyFormatterClass</span>).<span
+  class=SpellE>format’.Example</span> formatting cf:qualifier1 and cf:qualifier2
+  both as Integers:<br>
+  <span class=SpellE>hbase</span>&gt; get ‘t1’, ‘r1’ {COLUMN =&gt;
+  [‘cf:qualifier1:toInt’,<br>
+  ‘cf:qualifier2:c(<span class=SpellE>org.apache.hadoop.hbase.util.Bytes</span>).<span
+  class=SpellE>toInt</span>’] }<o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>Note that you can specify a FORMATTER by column only (<span
+  class=SpellE>cf<span class=GramE>:qualifer</span></span>). You cannot specify<br>
+  a FORMATTER for all columns of a column <span class=SpellE>family.The</span>
+  same commands also can be run on a reference to a table (obtained via <span
+  class=SpellE>get_table</span> or<br>
+  <span class=SpellE>create_table</span>). Suppose you had a reference t to
+  table ‘t1’, the corresponding commands<br>
+  would be:<o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span class=SpellE><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>hbase</span></b></span><b><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>&gt; <span class=SpellE>t.get</span> ‘r1’</span></b><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'><br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; <span class=SpellE>t.get</span>
+  ‘r1’, {TIMERANGE =&gt; [ts1, ts2]}</b><br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; <span class=SpellE>t.get</span>
+  ‘r1’, {COLUMN =&gt; ‘c1’}</b><br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; <span class=SpellE>t.get</span>
+  ‘r1’, {COLUMN =&gt; [‘c1’, ‘c2’, ‘c3’]}</b><br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; <span class=SpellE>t.get</span>
+  ‘r1’, {COLUMN =&gt; ‘c1’, TIMESTAMP =&gt; ts1}</b><br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; <span class=SpellE>t.get</span>
+  ‘r1’, {COLUMN =&gt; ‘c1’, TIMERANGE =&gt; [ts1, ts2], VERSIONS =&gt; 4}</b><br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; <span class=SpellE>t.get</span>
+  ‘r1’, {COLUMN =&gt; ‘c1’, TIMESTAMP =&gt; ts1, VERSIONS =&gt; 4}</b><br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; <span class=SpellE>t.get</span>
+  ‘r1’, {FILTER =&gt; “<span class=SpellE>ValueFilter</span>(=, ‘<span
+  class=SpellE>binary:abc</span>’)”}</b><br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; <span class=SpellE>t.get</span>
+  ‘r1’, ‘c1’</b><br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; <span class=SpellE>t.get</span>
+  ‘r1’, ‘c1’, ‘c2’</b><br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; <span class=SpellE>t.get</span>
+  ‘r1’, [‘c1’, ‘c2’]</b><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:4'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  class=SpellE><b><span lang=EN-US style='font-size:12.0pt;font-family:宋体;
+  mso-bidi-font-family:宋体;mso-font-kerning:0pt'>get_counter</span></b></span><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>Return a counter cell value at specified table/row/column
+  coordinates.<br>
+  A cell <span class=SpellE>cell</span> should be managed with atomic increment
+  function oh <span class=SpellE>HBase</span><br>
+  and the data should be binary encoded. Example:<o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span class=SpellE><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>hbase</span></b></span><b><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>&gt; <span class=SpellE>get_counter</span> ‘t1’, ‘r1’, ‘c1’</span></b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'><o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>The same commands also can be run on a table reference. Suppose you had
+  a reference<br>
+  t to table ‘t1’, the corresponding command would be:<o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span class=SpellE><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>hbase</span></b></span><b><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>&gt; <span class=SpellE>t.get_counter</span> ‘r1’, ‘c1’</span></b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:5'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  class=SpellE><b><span lang=EN-US style='font-size:12.0pt;font-family:宋体;
+  mso-bidi-font-family:宋体;mso-font-kerning:0pt'>incr</span></b></span><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>Increments a cell ‘value’ at specified table/row/column
+  coordinates.<br>
+  To increment a cell value in table ‘t1’ at row ‘r1’ under column<br>
+  ‘c1’ by 1 (can be omitted) or 10 do:<o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span class=SpellE><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>hbase</span></b></span><b><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>&gt; <span class=SpellE>incr</span> ‘t1’, ‘r1’, ‘c1’</span></b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'><br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; <span class=SpellE>incr</span>
+  ‘t1’, ‘r1’, ‘c1’, 1</b><br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; <span class=SpellE>incr</span>
+  ‘t1’, ‘r1’, ‘c1’, 10</b><o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>The same commands also can be run on a table reference. Suppose you had
+  a reference<br>
+  t to table ‘t1’, the corresponding command would <span class=SpellE>be:hbase</span>&gt;
+  <span class=SpellE>t.incr</span> ‘r1’, ‘c1’<br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; <span class=SpellE>t.incr</span>
+  ‘r1’, ‘c1’, 1</b><br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; <span class=SpellE>t.incr</span>
+  ‘r1’, ‘c1’, 10</b><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:6'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>put</span></b><span lang=EN-US style='font-size:12.0pt;
+  font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>Put a cell ‘value’ at specified table/row/column and
+  optionally<br>
+  timestamp coordinates. To put a cell value into table ‘t1’ at<br>
+  row ‘r1’ under column ‘c1’ marked with the time ‘ts1’, do:<o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span class=SpellE><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>hbase</span></b></span><b><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>&gt; put ‘t1’, ‘r1’, ‘c1’, ‘value’, ts1</span></b><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'><o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>The same commands also can be run on a table reference. Suppose you had
+  a reference<br>
+  t to table ‘t1’, the corresponding command would be:<o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span class=SpellE><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>hbase</span></b></span><b><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>&gt; <span class=SpellE>t.put</span> ‘r1’, ‘c1’, ‘value’, ts1</span></b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:7'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>scan</span></b><span lang=EN-US style='font-size:12.0pt;
+  font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>Scan a table; pass table name and optionally a
+  dictionary of scanner<br>
+  specifications. Scanner specifications may include one or more of<span
+  class=GramE>:</span><br>
+  TIMERANGE, FILTER, LIMIT, STARTROW, STOPROW, TIMESTAMP, MAXLENGTH,<br>
+  or COLUMNS, <span class=SpellE>CACHEIf</span> no columns are specified, all columns
+  will be scanned.<br>
+  To scan all members of a column family, leave the qualifier empty as in<br>
+  ‘<span class=SpellE>col_family:’.The</span> filter can be specified in two
+  ways:<br>
+  1. Using a <span class=SpellE>filterString</span> – more information on this
+  is available in the<br>
+  Filter Language document attached to the HBASE-4176 JIRA<br>
+  2. Using the entire package name of the <span class=SpellE>filter.Some</span>
+  <span class=SpellE>examples<span class=GramE>:hbase</span></span>&gt; scan
+  ‘.META.’<br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; scan ‘.META.’, {COLUMNS =&gt; ‘<span
+  class=SpellE>info:regioninfo</span>’}</b><br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; scan ‘t1’, {COLUMNS =&gt;
+  [‘c1’, ‘c2’], LIMIT =&gt; 10, STARTROW =&gt; ‘xyz’}</b><br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; scan ‘t1’, {COLUMNS =&gt; ‘c1’,
+  TIMERANGE =&gt; [1303668804, 1303668904]}</b><br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; scan ‘t1’, {FILTER =&gt; “(<span
+  class=SpellE>PrefixFilter</span> (‘row2’) AND</b><br>
+  <b>(<span class=SpellE>QualifierFilter</span> (&gt;=, ‘<span class=SpellE>binary:xyz</span>’)))
+  AND (<span class=SpellE>TimestampsFilter</span> ( 123, 456))”}</b><br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; scan ‘t1’, {FILTER =&gt;</b><br>
+  <span class=SpellE><b>org.apache.hadoop.hbase.filter.ColumnPaginationFilter.new</b></span><b>(1,
+  0)}</b><o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>For experts, there is an additional option — CACHE_BLOCKS — which<br>
+  switches block caching for the scanner on (true) or off (false). By<br>
+  default it is enabled. <span class=SpellE>Examples:hbase</span>&gt; scan
+  ‘t1’, {COLUMNS =&gt; [‘c1’, ‘c2’], CACHE_BLOCKS =&gt; false}<o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>Also for experts, there is an advanced option — RAW — which instructs
+  the<br>
+  scanner to return all cells (including delete markers and uncollected deleted<br>
+  cells). This option cannot be combined with requesting specific COLUMNS.<br>
+  Disabled by default. Example:<o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span class=SpellE><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>hbase</span></b></span><b><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>&gt; scan ‘t1’, {RAW =&gt; true, VERSIONS =&gt; 10}</span></b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'><o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>Besides the default ‘<span class=SpellE>toStringBinary</span>’ format,
+  ‘scan’ supports custom formatting<br>
+  by column. A user can define a FORMATTER by adding it to the column name in<br>
+  the scan specification. The FORMATTER can be stipulated:<o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>1. <span class=GramE>either</span> as a <span class=SpellE>org.apache.hadoop.hbase.util.Bytes</span>
+  method name (<span class=SpellE>e.g</span>, <span class=SpellE>toInt</span>, <span
+  class=SpellE>toString</span>)<br>
+  2. <span class=GramE>or</span> as a custom class followed by method name:
+  e.g. ‘c(<span class=SpellE>MyFormatterClass</span>).format’.<o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>Example formatting cf:qualifier1 and cf:qualifier2 both as Integers:<br>
+  <span class=SpellE>hbase</span>&gt; scan ‘t1’, {COLUMNS =&gt;
+  [‘cf:qualifier1:toInt’,<br>
+  ‘cf:qualifier2:c(<span class=SpellE>org.apache.hadoop.hbase.util.Bytes</span>).<span
+  class=SpellE>toInt</span>’] }<o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>Note that you can specify a FORMATTER by column only (<span
+  class=SpellE>cf<span class=GramE>:qualifer</span></span>). You cannot<br>
+  specify a FORMATTER for all columns of a column family.<o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>Scan can also be used directly from a table, by first getting a
+  reference to a<br>
+  table, like such:<o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span class=SpellE><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>hbase</span></b></span><b><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>&gt; t = <span class=SpellE>get_table</span> ‘t’</span></b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'><br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; <span class=SpellE>t.scan</span></b><o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>Note in the above situation, you can still provide all the filtering,
+  columns<span class=GramE>,</span><br>
+  options, etc as described above.<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:8;mso-yfti-lastrow:yes'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>truncate</span></b><span lang=EN-US style='font-size:
+  12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  class=GramE><span lang=EN-US style='font-size:12.0pt;font-family:宋体;
+  mso-bidi-font-family:宋体;mso-font-kerning:0pt'>Disables,</span></span><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'> drops and recreates the specified table.<br>
+  Examples:<br>
+  <span class=SpellE><b>hbase</b></span><b>&gt;truncate ‘t1’</b><o:p></o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+auto;text-align:left;mso-pagination:widow-orphan'><b><span lang=EN-US
+style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+0pt'>4) <span class=SpellE>HBase</span> surgery tools</span></b><span
+lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+mso-font-kerning:0pt'><o:p></o:p></span></p>
+
+<table class=MsoNormalTable border=0 cellpadding=0 style='mso-cellspacing:1.5pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>assign</span></b><span lang=EN-US style='font-size:
+  12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>Assign a region. Use with caution. If region already
+  assigned<span class=GramE>,</span><br>
+  this command will do a force reassign. For experts only.<br>
+  Examples:<br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; assign ‘REGION_NAME’</b><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:1'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>balancer</span></b><span lang=EN-US style='font-size:
+  12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>Trigger the cluster balancer. Returns true if balancer
+  ran and was able to<br>
+  tell the region servers to <span class=SpellE>unassign</span> all the regions
+  to balance (the re-assignment itself is <span class=SpellE>async</span>).<br>
+  Otherwise false (Will not run if regions in transition).<br>
+  Examples:<br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; balancer</b><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:2'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  class=SpellE><b><span lang=EN-US style='font-size:12.0pt;font-family:宋体;
+  mso-bidi-font-family:宋体;mso-font-kerning:0pt'>balance_switch</span></b></span><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>Enable/Disable balancer. Returns previous balancer
+  state.<br>
+  Examples:<o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span class=SpellE><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>hbase</span></b></span><b><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>&gt; <span class=SpellE>balance_switch</span> true</span></b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'><br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; <span class=SpellE>balance_switch</span>
+  false</b><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:3'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  class=SpellE><b><span lang=EN-US style='font-size:12.0pt;font-family:宋体;
+  mso-bidi-font-family:宋体;mso-font-kerning:0pt'>close_region</span></b></span><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>Close a single region. Ask the master to close a region
+  out on the cluster<br>
+  or if ‘SERVER_NAME’ is supplied, ask the designated hosting <span
+  class=SpellE>regionserver</span> to<br>
+  close the region directly. Closing a region, the master expects ‘REGIONNAME’<br>
+  to be a fully qualified region name. When asking the hosting <span
+  class=SpellE>regionserver</span> to<br>
+  directly close a region, you pass the regions’ encoded name only. A region<br>
+  name looks like this<span class=GramE>:TestTable,0094429456,1289497600452.527db22f95c8a9e0116f0cc13c680396.The</span>
+  trailing period is part of the <span class=SpellE>regionserver</span> name. A
+  region’s encoded name<br>
+  is the hash at the end of a region name; e.g. <span class=GramE>527db22f95c8a9e0116f0cc13c680396</span><br>
+  (without the period). A ‘SERVER_NAME’ is its host, port plus <span
+  class=SpellE>startcode</span>. For<br>
+  example: host187.example.com<span class=GramE>,60020,1289493121758</span>
+  (find <span class=SpellE>servername</span> in master <span class=SpellE>ui</span><br>
+  or when you do detailed status in shell). This command will end up running<br>
+  close on the region hosting <span class=SpellE>regionserver</span>. The close
+  is done without the<br>
+  master’s involvement (It will not know of the close). Once closed, region
+  will<br>
+  stay closed. <span class=GramE>Use assign</span> to reopen/reassign. <span
+  class=GramE>Use <span class=SpellE>unassign</span></span> or move to assign<br>
+  the region elsewhere on cluster. Use with caution. For experts only.<br>
+  <span class=SpellE>Examples:hbase</span>&gt; <span class=SpellE>close_region</span>
+  ‘REGIONNAME’<br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; <span class=SpellE>close_region</span>
+  ‘REGIONNAME’, ‘SERVER_NAME’</b><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:4'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>compact</span></b><span lang=EN-US style='font-size:
+  12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>Compact all regions in passed table or pass a region
+  row<br>
+  to compact an individual region. You can also compact a single column<br>
+  family within a region.<br>
+  Examples:<br>
+  Compact all regions in a table:<br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; compact ‘t1’</b><br>
+  Compact an entire region:<br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; compact ‘r1’</b><br>
+  Compact only a column family within a region:<br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; compact ‘r1’, ‘c1’</b><br>
+  Compact a column family within a table:<br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; compact ‘t1’, ‘c1’</b><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:5'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>flush</span></b><span lang=EN-US style='font-size:12.0pt;
+  font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>Flush all regions in passed table or pass a region row
+  to<br>
+  flush an individual region. For <span class=SpellE>example:hbase</span>&gt;
+  flush ‘TABLENAME’<br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; flush ‘REGIONNAME’</b><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:6'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  class=SpellE><b><span lang=EN-US style='font-size:12.0pt;font-family:宋体;
+  mso-bidi-font-family:宋体;mso-font-kerning:0pt'>major_compact</span></b></span><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>Run major compaction on passed table or pass a region
+  row<br>
+  to major compact an individual region. To compact <span class=GramE>a single<br>
+  column family within a region specify</span> the region name<br>
+  followed by the column family name.<br>
+  Examples:<br>
+  Compact all regions in a table:<br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; <span class=SpellE>major_compact</span>
+  ‘t1’</b><br>
+  Compact an entire region:<br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; <span class=SpellE>major_compact</span>
+  ‘r1’</b><br>
+  Compact a single column family within a region:<br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; <span class=SpellE>major_compact</span>
+  ‘r1’, ‘c1’</b><br>
+  Compact a single column family within a table:<br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; <span class=SpellE>major_compact</span>
+  ‘t1’, ‘c1’</b><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:7'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>move</span></b><span lang=EN-US style='font-size:12.0pt;
+  font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>Move a region. Optionally specify target <span
+  class=SpellE>regionserver</span> else we choose one<br>
+  at random. NOTE: You pass the encoded region name, not the region name so<br>
+  this command is a little different to the others. The encoded region name<br>
+  is the hash suffix on region names: e.g. if the region name were<br>
+  TestTable<span class=GramE>,0094429456,1289497600452.527db22f95c8a9e0116f0cc13c680396</span>.
+  <span class=GramE>then</span><br>
+  the encoded region name portion is 527db22f95c8a9e0116f0cc13c680396<br>
+  A server name is its host, port plus <span class=SpellE>startcode</span>. For
+  example:<br>
+  host187.example.com,60020,1289493121758<br>
+  <span class=SpellE>Examples:hbase</span>&gt; move ‘ENCODED_REGIONNAME’<br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; move ‘ENCODED_REGIONNAME’,
+  ‘SERVER_NAME’</b><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:8'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>split</span></b><span lang=EN-US style='font-size:12.0pt;
+  font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>Split entire table or pass a region to split individual
+  region. With the<br>
+  second parameter, you can specify an explicit split key for the region.<br>
+  Examples:<br>
+  <b>split ‘<span class=SpellE>tableName</span>’</b><br>
+  <b>split ‘<span class=SpellE>regionName</span>’ # format: ‘<span
+  class=SpellE>tableName,startKey,id</span>’</b><br>
+  <b>split ‘<span class=SpellE>tableName</span>’, ‘<span class=SpellE>splitKey</span>’</b><br>
+  <b>split ‘<span class=SpellE>regionName</span>’, ‘<span class=SpellE>splitKey</span>’</b><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:9'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  class=SpellE><b><span lang=EN-US style='font-size:12.0pt;font-family:宋体;
+  mso-bidi-font-family:宋体;mso-font-kerning:0pt'>unassign</span></b></span><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  class=SpellE><span lang=EN-US style='font-size:12.0pt;font-family:宋体;
+  mso-bidi-font-family:宋体;mso-font-kerning:0pt'>Unassign</span></span><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'> a region. <span class=SpellE>Unassign</span> will
+  close region in current location and then<br>
+  reopen it again. Pass ‘true’ to force the <span class=SpellE>unassignment</span>
+  (‘force’ will clear<br>
+  all in-memory state in master before the reassign. If results in<br>
+  double assignment use <span class=SpellE>hbck</span> -fix to resolve. To be
+  used by experts).<br>
+  Use with caution. For expert use only. <span class=SpellE>Examples:hbase</span>&gt;
+  <span class=SpellE>unassign</span> ‘REGIONNAME’<br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; <span class=SpellE>unassign</span>
+  ‘REGIONNAME’, true</b><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:10'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  class=SpellE><b><span lang=EN-US style='font-size:12.0pt;font-family:宋体;
+  mso-bidi-font-family:宋体;mso-font-kerning:0pt'>hlog_roll</span></b></span><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>Roll the log writer. That is, start writing log
+  messages to a new file.<br>
+  The name of the <span class=SpellE>regionserver</span> should be given as the
+  parameter. A<br>
+  ‘<span class=SpellE>server_name</span>’ is the host, port plus <span
+  class=SpellE>startcode</span> of a <span class=SpellE>regionserver</span>.
+  For<br>
+  example: host187.example.com,60020,1289493121758 (find <span class=SpellE>servername</span>
+  in<br>
+  master <span class=SpellE>ui</span> or when you do detailed status in shell)<o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span class=SpellE><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>hbase</span></b></span><b><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>&gt;<span class=SpellE>hlog_roll</span></span></b><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:11'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  class=SpellE><b><span lang=EN-US style='font-size:12.0pt;font-family:宋体;
+  mso-bidi-font-family:宋体;mso-font-kerning:0pt'>zk_dump</span></b></span><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>Dump status of <span class=SpellE>HBase</span> cluster
+  as seen by <span class=SpellE>ZooKeeper</span>. Example:<br>
+  <span class=SpellE><b>hbase</b></span><b>&gt;<span class=SpellE>zk_dump</span></b><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:12;mso-yfti-lastrow:yes'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'><o:p>&nbsp;</o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  lang=EN-US style='font-size:10.0pt;mso-font-kerning:0pt'><o:p>&nbsp;</o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+auto;text-align:left;mso-pagination:widow-orphan'><b><span lang=EN-US
+style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+0pt'>5) Cluster replication tools</span></b><span lang=EN-US style='font-size:
+12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:0pt'><o:p></o:p></span></p>
+
+<table class=MsoNormalTable border=0 cellpadding=0 style='mso-cellspacing:1.5pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  class=SpellE><b><span lang=EN-US style='font-size:12.0pt;font-family:宋体;
+  mso-bidi-font-family:宋体;mso-font-kerning:0pt'>add_peer</span></b></span><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>Add a peer cluster to replicate to, the id must be a
+  short and<br>
+  the cluster key is composed like this<span class=GramE>:</span><br>
+  hbase.zookeeper.quorum:hbase.zookeeper.property.clientPort:zookeeper.znode.parent<br>
+  This gives a full path for <span class=SpellE>HBase</span> to connect to
+  another cluster.<br>
+  <span class=SpellE>Examples:hbase</span>&gt; <span class=SpellE>add_peer</span>
+  ‘1’, “server1.cie.com:2181:/hbase”<br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; <span class=SpellE>add_peer</span>
+  ‘2’, “zk1,zk2,zk3:2182:/hbase-prod”</b><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:1'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  class=SpellE><b><span lang=EN-US style='font-size:12.0pt;font-family:宋体;
+  mso-bidi-font-family:宋体;mso-font-kerning:0pt'>remove_peer</span></b></span><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>Stops the specified replication stream and deletes all
+  the meta<br>
+  information kept about it. Examples:<o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span class=SpellE><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>hbase</span></b></span><b><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>&gt; <span class=SpellE>remove_peer</span> ‘1’</span></b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:2'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  class=SpellE><b><span lang=EN-US style='font-size:12.0pt;font-family:宋体;
+  mso-bidi-font-family:宋体;mso-font-kerning:0pt'>list_peers</span></b></span><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>List all replication peer clusters.<br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; <span class=SpellE>list_peers</span></b><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:3'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  class=SpellE><b><span lang=EN-US style='font-size:12.0pt;font-family:宋体;
+  mso-bidi-font-family:宋体;mso-font-kerning:0pt'>enable_peer</span></b></span><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>Restarts the replication to the specified peer cluster,<br>
+  continuing from where it was <span class=SpellE>disabled.Examples</span>:<o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span class=SpellE><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>hbase</span></b></span><b><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>&gt; <span class=SpellE>enable_peer</span> ‘1’</span></b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:4'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  class=SpellE><b><span lang=EN-US style='font-size:12.0pt;font-family:宋体;
+  mso-bidi-font-family:宋体;mso-font-kerning:0pt'>disable_peer</span></b></span><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>Stops the replication stream to the specified cluster,
+  but still<br>
+  keeps track of new edits to <span class=SpellE>replicate.Examples</span>:<o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span class=SpellE><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>hbase</span></b></span><b><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>&gt; <span class=SpellE>disable_peer</span> ‘1’</span></b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:5'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  class=SpellE><b><span lang=EN-US style='font-size:12.0pt;font-family:宋体;
+  mso-bidi-font-family:宋体;mso-font-kerning:0pt'>start_replication</span></b></span><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>Restarts all the replication features. The state in
+  which each<br>
+  stream starts in is undetermined.<br>
+  WARNING<span class=GramE>:</span><br>
+  start/stop replication is only meant to be used in critical load situations.<br>
+  Examples:<o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span class=SpellE><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>hbase</span></b></span><b><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>&gt; <span class=SpellE>start_replication</span></span></b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:6;mso-yfti-lastrow:yes'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  class=SpellE><b><span lang=EN-US style='font-size:12.0pt;font-family:宋体;
+  mso-bidi-font-family:宋体;mso-font-kerning:0pt'>stop_replication</span></b></span><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>Stops all the replication features. The state in which
+  each<br>
+  stream stops in is undetermined.<br>
+  WARNING<span class=GramE>:</span><br>
+  start/stop replication is only meant to be used in critical load situations.<br>
+  Examples:<o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span class=SpellE><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>hbase</span></b></span><b><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>&gt; <span class=SpellE>stop_replication</span></span></b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+auto;text-align:left;mso-pagination:widow-orphan'><b><span lang=EN-US
+style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+0pt'>6) Security tools</span></b><span lang=EN-US style='font-size:12.0pt;
+font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:0pt'><o:p></o:p></span></p>
+
+<table class=MsoNormalTable border=0 cellpadding=0 style='mso-cellspacing:1.5pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>grant</span></b><span lang=EN-US style='font-size:12.0pt;
+  font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>Grant users specific rights.<br>
+  <span class=GramE>Syntax :</span> <span class=SpellE>grantpermissions</span>
+  is either zero or more letters from the set “RWXCA”.<br>
+  READ(‘R’), WRITE(‘W’), EXEC(‘X’), CREATE(‘C’), ADMIN(‘A’)For <span
+  class=SpellE>example:hbase</span>&gt; grant ‘<span class=SpellE>bobsmith</span>’,
+  ‘RWXCA’<br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; grant ‘<span class=SpellE>bobsmith</span>’,
+  ‘RW’, ‘t1’, ‘f1’, ‘col1’</b><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:1'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>revoke</span></b><span lang=EN-US style='font-size:
+  12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>Revoke a user’s access rights.<br>
+  Syntax : revoke<br>
+  For example:<o:p></o:p></span></p>
+  <p class=MsoNormal align=left style='mso-margin-top-alt:auto;mso-margin-bottom-alt:
+  auto;text-align:left;mso-pagination:widow-orphan'><span class=SpellE><b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>hbase</span></b></span><b><span lang=EN-US
+  style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;mso-font-kerning:
+  0pt'>&gt; revoke ‘<span class=SpellE>bobsmith</span>’, ‘t1’, ‘f1’, ‘col1’</span></b><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:2;mso-yfti-lastrow:yes'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  class=SpellE><b><span lang=EN-US style='font-size:12.0pt;font-family:宋体;
+  mso-bidi-font-family:宋体;mso-font-kerning:0pt'>user_permission</span></b></span><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'><o:p></o:p></span></p>
+  </td>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal align=left style='text-align:left;mso-pagination:widow-orphan'><span
+  lang=EN-US style='font-size:12.0pt;font-family:宋体;mso-bidi-font-family:宋体;
+  mso-font-kerning:0pt'>Show all permissions for the particular user.<br>
+  Syntax : <span class=SpellE>user_permission</span><br>
+  For <span class=SpellE>example:hbase</span>&gt; <span class=SpellE>user_permission</span><br>
+  <span class=SpellE><b>hbase</b></span><b>&gt; <span class=SpellE>user_permission</span>
+  ‘table1’</b><o:p></o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
+
+</div>
+
+</body>
+
+</html>
