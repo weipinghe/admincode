@@ -27,3 +27,4 @@ Password for cloudera/admin@CDH44-SECURE-LOCAL:
 # klist -e -k -t /etc/hive/conf/hive.keytab
 # kinit -k -t /etc/hive/conf/hive.keytab  hive/cdh44-secure@CDH44-SECURE-LOCAL
  
+ $ kdestroy
