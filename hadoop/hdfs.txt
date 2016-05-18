@@ -1,0 +1,12 @@
+hdfs dfs -getmerge <src> <localfile>
+
+#Change replication factor
+hdfs dfs -setrep <filename>
+
+# hdfs fsck /user/root/big.txt -files -blocks -locations
+
+[root@adc19 export]# mkdir /hdfsmount
+[root@adc19 export]# mount -t nfs -o vers=3,proto=tcp,nolock 192.168.1.2:/ /hdfsmount
+[root@adc19 export]# df -h /hdfsmount
+Filesystem            Size  Used Avail Use% Mounted on
+192.168.1.2:/         25T  2.4T   22T  10% /hdfsmount
