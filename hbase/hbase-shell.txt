@@ -344,3 +344,4 @@ hbase> revoke ¡®bobsmith¡¯, ¡®t1¡¯, ¡®f1¡¯, ¡®col1¡¯user_permissionShow all pe
 Syntax : user_permission
 For example:hbase> user_permission
 hbase> user_permission ¡®table1¡¯
+https://learnhbase.wordpress.com/2013/03/02/hbase-shell-commands/
