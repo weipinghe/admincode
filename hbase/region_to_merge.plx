@@ -27,3 +27,52 @@
 # 
 # Note: major compactions do NOT do region merges.
 #
+
+use Data::Dumper;
+use Math::Round;
+use Cwd 'abs_path';
+
+# If the module is not installed, download from http://www.cpan.org/
+
+# Use Hortonworks Hadoop distribution
+# Two inputs
+# $hdfs_meta will be the output of command: hadoop fs -lsr /apps/hbase/data/data 
+# $hbase_meta will be the output of hbase shell command: echo "scan 'hbase:meta'" | hbase shell
+# 
+# To run the script
+# ./region_to_merge.plx $hdfs_meta $hbase_meta 5000000000
+#
+# 5000000000 = 5GB
+#10000000000 =10GB
+
+#
+$num_args=$#ARGV + 1;
+if ($num_args !=3 ) {
+  print "\nUsage: ".abs_path($0)." hdfs_meta  hbase_meta 5000000000\n";
+  print "hdfs_meta will be the output of command: hadoop fs -lsr /apps/hbase/data/data\n"; 
+  print "hbase_meta will be the output of hbase shell command: echo \"scan 'hbase:meta'\" | hbase shell\n";
+  print "5000000000 = 5GB\n";
+  exit;
+}
+
+$hdfs_meta = $ARGV[0];
+$hbase_meta = $ARGV[1];
+$merge_size = $ARGV[2];
+$outputfile1 = "region_size_sortby_key";
+$outputfile2 = "region_to_merge";
+
+my %hashtabe1;
+open(FILE1,"$hdfs_meta")||die "Cannot open $hdfs_meta ";
+chomp(@List1 = <FILE1>);
+foreach $line1 (@List1) {
+  chomp ($line1);
+  if ( ( $line1 =~ /\.regioninfo/ ) || ($line1 =~ /recovered\.edits/) )
+   {}
+  else {
+   if ( $line1 =~ m/(\/[\w]*){7,}/ )  {
+     @myarray1= split /\s+/, $line1;
+     
+     }
+  }
+}  
+ 
