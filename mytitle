@@ -1,0 +1,9 @@
+#!/bin/bash
+# refer http://stackoverflow.com/questions/1687642/set-screen-title-from-shellscript
+first=`uname -n`
+if test $# -eq 0
+        then
+                echo -e "\e]2;$first\a#"
+        else
+                echo -e "\e]2;$1\a#"
+fi
