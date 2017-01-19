@@ -1,12 +1,6 @@
 HBase Scanner Filter Examples
 =================================
 
-## References:
-* [Original](https://gist.github.com/stelcheck/3979381)
-* [HBase REST Filter (SingleColumnValueFilter)](http://stackoverflow.com/questions/9302097/hbase-rest-filter-singlecolumnvaluefilter)
-* [HBase Intra-row scanning](http://stackoverflow.com/questions/13119369/hbase-intra-row-scanning)
-* [HBase Book / Chapter on Client Filter](http://hbase.apache.org/book/client.filter.html)
-
 ### [ColumnPrefixFilter](http://hbase.apache.org/apidocs/org/apache/hadoop/hbase/filter/ColumnPrefixFilter.html)
 ```
 {
@@ -162,3 +156,9 @@ null
   ]
 }
 ```
+
+## References:
+* [Original Post](https://gist.github.com/stelcheck/3979381)
+* [HBase REST Filter (SingleColumnValueFilter)](http://stackoverflow.com/questions/9302097/hbase-rest-filter-singlecolumnvaluefilter)
+* [HBase Intra-row scanning](http://stackoverflow.com/questions/13119369/hbase-intra-row-scanning)
+* [HBase Book / Chapter on Client Filter](http://hbase.apache.org/book/client.filter.html)
