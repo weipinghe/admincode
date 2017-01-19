@@ -3,19 +3,23 @@
 
  /usr/jdk64/jdk1.8.0_102/bin/java -Djavax.net.ssl.trustStore=/etc/security/certs/all-server.company.com.jks \
     -Djavax.net.ssl.keyStorePassword=company \
-    -Djavax.net.ssl.keyStore=/etc/security/certs/weiping-server.company.com.jks HttpsClient
+    -Djavax.net.ssl.keyStore=/etc/security/certs/weiping-server.company.com.jks HttpsClient \
+    https://11.company.com:50470
 
  /usr/jdk64/jdk1.8.0_102/bin/java -Djavax.net.ssl.trustStore=/etc/security/certs/all-server.company.com.jks \
     -Djavax.net.ssl.keyStorePassword=company \
-    HttpsClient
+    HttpsClient https://11.company.com:50470
 
  /usr/jdk64/jdk1.8.0_102/bin/java \
     -Djavax.net.ssl.keyStorePassword=company \
-    -Djavax.net.ssl.keyStore=/etc/security/certs/weiping-server.company.com.jks HttpsClient
+    -Djavax.net.ssl.keyStore=/etc/security/certs/weiping-server.company.com.jks HttpsClient \
+    https://11.company.com:50470
 
  /usr/jdk64/jdk1.8.0_102/bin/java -Djavax.net.ssl.trustStore=/etc/security/certs/all-server.company.com.jks \
-    HttpsClient
+    HttpsClient https://11.company.com:50470
 
+ openssl s_client -connect 11.company.com:50470 -CAfile /tmp/mytempdb/cert.pem
+ openssl s_client -showcerts -connect 11.company.com:50470 -tls1
 
 */
 
@@ -31,12 +35,12 @@ public class HttpsClient{
 
    public static void main(String[] args)
    {
-        new HttpsClient().testIt();
+        new HttpsClient().testIt(args[0]);
    }
 
-   private void testIt(){
+   private void testIt(String https_url){
 
-      String https_url = "https://11.company.com:50470";
+      //String https_url = "https://11.company.com:50470";
       URL url;
       try {
 
