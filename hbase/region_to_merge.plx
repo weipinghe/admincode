@@ -35,15 +35,18 @@ use Cwd 'abs_path';
 # If the module is not installed, download from http://www.cpan.org/
 
 # Use Hortonworks Hadoop distribution
-# Two inputs
+# Three inputs
 # $hdfs_meta will be the output of command: hadoop fs -lsr /apps/hbase/data/data 
 # $hbase_meta will be the output of hbase shell command: echo "scan 'hbase:meta'" | hbase shell
+# Size of the regions you are looking for
 # 
 # To run the script
 # ./region_to_merge.plx $hdfs_meta $hbase_meta 5000000000
 #
 # 5000000000 = 5GB
 #10000000000 =10GB
+
+#outputs
 
 #
 $num_args=$#ARGV + 1;
@@ -70,9 +73,21 @@ foreach $line1 (@List1) {
    {}
   else {
    if ( $line1 =~ m/(\/[\w]*){7,}/ )  {
-     @myarray1= split /\s+/, $line1;
-     
+     @myarray1 = split (/\s+/, $line1);
+     @curr_keys = split ('/', $myarray1[7]);
+     @hashtabe1 ($curr_keys[7]) += $myarray1[4];
      }
   }
 }  
+close(FILE1); 
+
+open(FILE2,">tempfile1")||die "Cannot open tempfile1 ";
  
+foreach my $key ( keys(%hashtabe1) )
+{
+   $val_in_gb=round( $hashtabe1($key)/1024 );
+   print FILE2 "$key : $hashtabe1($key) \n";     
+}
+close(FILE2);
+
+# sort this tempfile1
