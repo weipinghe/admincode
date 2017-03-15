@@ -75,19 +75,35 @@ foreach $line1 (@List1) {
    if ( $line1 =~ m/(\/[\w]*){7,}/ )  {
      @myarray1 = split (/\s+/, $line1);
      @curr_keys = split ('/', $myarray1[7]);
-     @hashtabe1 ($curr_keys[7]) += $myarray1[4];
+     $hashtabe1{$curr_keys[7]} += $myarray1[4];
      }
   }
 }  
 close(FILE1); 
 
-open(FILE2,">tempfile1")||die "Cannot open tempfile1 ";
+open(FILE2,">$outputfile1")||die "Cannot open $outputfile1 ";
  
-foreach my $key ( keys(%hashtabe1) )
+foreach my $key ( sort keys(%hashtabe1) )
 {
-   $val_in_gb=round( $hashtabe1($key)/1024 );
-   print FILE2 "$key : $hashtabe1($key) \n";     
+   if ($key =~ /^\./) {}
+   else {
+	   print FILE2 "$key\t$hashtabe1{$key} \n";     
+   }
 }
 close(FILE2);
 
-# sort this tempfile1
+
+open(FILE3,"$hbase_meta")||die "Cannot open $hbase_meta ";
+chomp(@List3 = <FILE3>);
+foreach $line3 (@List3) {
+	my @fileds = split (/,/, $line3);
+	$line3a = "$fileds[2] $fileds[3]";	
+	@tokens = split (/ /, $line3a);
+	@myregions = split (/\./, $tokens[0]);
+	print "Regions: $myregions[1]\n");
+	print "Start Key: $tokens[1]\n");
+	print "End Key: $tokens[3]\n");
+}
+
+
+
