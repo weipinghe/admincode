@@ -118,14 +118,14 @@ foreach my $key ( sort keys(%hashtable1) )
 	   		print "\# is merging with\n";
 	   		printf "\# $mergeregion : %.2fMB\n", $hashtable1{$mergeregion}/1000000;
 	   		print "echo \"merge_region \'$key\', \'$mergeregion\'\" |hbase shell>>/var/tmp/hbasemerge-$mydate.out\n";
-	   		print "echo -e \"\\n\"";
+	   		print "echo -e \"\\n\">>/var/tmp/hbasemerge-$mydate.out\n";
 	   		$mymergedregion{$key} = 1;
+	   		$mymergedregion{$mergeregion} = 1;
 	   	}
 	   }
 	   print  "\n\n";     
    }
-}
- 
+} 
 print "\# Written by Weiping He\n";
  
 
