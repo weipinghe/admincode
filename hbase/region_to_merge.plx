@@ -61,7 +61,7 @@ $hbase_meta = $ARGV[1];
 $merge_size = $ARGV[2];
 $outputfile1 = "region_size_sortby_key";
 $outputfile2 = "region_to_merge";
-$mydate=`datte +%Y%m%d`;
+$mydate=`date +%Y%m%d`;
 chomp($mydate);
 
 # Step 1, Calculate region size.
@@ -122,7 +122,7 @@ foreach my $key ( sort keys(%hashtable1) )
 	   		$mymergedregion{$key} = 1;
 	   	}
 	   }
-	   print  "\n";     
+	   print  "\n\n";     
    }
 }
  
