@@ -1,4 +1,4 @@
-#!/bin/perl
+#!/usr/bin/perl
 # 2016/7/29
 # 
 # This script is to look for small size region to merge.
@@ -26,19 +26,18 @@
 # while 1000 regions will generate far too many tasks.
 # 
 # Note: major compactions do NOT do region merges.
-#
+# After merge, these regions will become other regions in HBase Master UI
+# Only after the HBase cluster restart, these regions will go away.
 
-use Data::Dumper;
-use Math::Round;
 use Cwd 'abs_path';
 
 # If the module is not installed, download from http://www.cpan.org/
 
 # Use Hortonworks Hadoop distribution
 # Three inputs
-# $hdfs_meta will be the output of command: hadoop fs -lsr /apps/hbase/data/data 
-# $hbase_meta will be the output of hbase shell command: echo "scan 'hbase:meta'" | hbase shell
-# Size of the regions you are looking for
+# 1. $hdfs_meta will be the output of command: hadoop fs -lsr /apps/hbase/data/data 
+# 2. $hbase_meta will be the output of hbase shell command: echo "scan 'hbase:meta'" | hbase shell
+# 3. Size of the small regions you are looking for
 # 
 # To run the script
 # ./region_to_merge.plx $hdfs_meta $hbase_meta 5000000000
@@ -46,9 +45,8 @@ use Cwd 'abs_path';
 # 5000000000 = 5GB
 #10000000000 =10GB
 
-#outputs
+# The output will be the actual commands to merge HBase region via HBase Shell.
 
-#
 $num_args=$#ARGV + 1;
 if ($num_args !=3 ) {
   print "\nUsage: ".abs_path($0)." hdfs_meta  hbase_meta 5000000000\n";
@@ -63,8 +61,11 @@ $hbase_meta = $ARGV[1];
 $merge_size = $ARGV[2];
 $outputfile1 = "region_size_sortby_key";
 $outputfile2 = "region_to_merge";
+$mydate=`datte +%Y%m%d`;
+chomp($mydate);
 
-my %hashtabe1;
+# Step 1, Calculate region size.
+my %hashtable1;
 open(FILE1,"$hdfs_meta")||die "Cannot open $hdfs_meta ";
 chomp(@List1 = <FILE1>);
 foreach $line1 (@List1) {
@@ -75,35 +76,58 @@ foreach $line1 (@List1) {
    if ( $line1 =~ m/(\/[\w]*){7,}/ )  {
      @myarray1 = split (/\s+/, $line1);
      @curr_keys = split ('/', $myarray1[7]);
-     $hashtabe1{$curr_keys[7]} += $myarray1[4];
+     $hashtable1{$curr_keys[7]} += $myarray1[4];
      }
   }
 }  
 close(FILE1); 
 
-open(FILE2,">$outputfile1")||die "Cannot open $outputfile1 ";
+# Step 2, find adjacent regions for each region based on hbase_meta
+# grep -C4 region hbase_meta | grep STARTKEY
+
+my %mymergedregion;
  
-foreach my $key ( sort keys(%hashtabe1) )
+foreach my $key ( sort keys(%hashtable1) )
 {
-   if ($key =~ /^\./) {}
+   $leftregion="";
+   $rightregion="";
+   if ( ($key =~ /^\./) || ($hashtable1{$key} > $merge_size) ) {}
    else {
-	   print FILE2 "$key\t$hashtabe1{$key} \n";     
+	   @rawoutputs = qx(grep -C4 $key $hbase_meta | grep STARTKEY | grep -v $key);
+	   foreach $rawstring (@rawoutputs) {
+	   	@items = split / /,$rawstring;
+	   	@regionstring = split /\./, $items[1];
+	   	if($leftregion){
+	   		$rightregion = $regionstring[1];
+	   	}
+	   	else {
+	   		$leftregion = $regionstring[1];
+	   	}
+	   }
+	   if ($leftregion) {
+	   	$mergeregion = $leftregion;
+	   	# Merge with smaller region
+	   	if ($hashtable1{$leftregion} > $hashtable1{$rightregion} ) {
+	   		$mergeregion = $rightregion;
+	   	}
+	   	if ($mymergedregion{$key}) {
+	   		print "\# Region $key is already merged.\n";
+	   	}
+	   	else {
+	   		printf "\# $key : %.2fMB\n", $hashtable1{$key}/1000000;
+	   		print "\# is merging with\n";
+	   		printf "\# $mergeregion : %.2fMB\n", $hashtable1{$mergeregion}/1000000;
+	   		print "echo \"merge_region \'$key\', \'$mergeregion\'\" |hbase shell>>/var/tmp/hbasemerge-$mydate.out\n";
+	   		print "echo -e \"\\n\"";
+	   		$mymergedregion{$key} = 1;
+	   	}
+	   }
+	   print  "\n";     
    }
 }
-close(FILE2);
-
-
-open(FILE3,"$hbase_meta")||die "Cannot open $hbase_meta ";
-chomp(@List3 = <FILE3>);
-foreach $line3 (@List3) {
-	my @fileds = split (/,/, $line3);
-	$line3a = "$fileds[2] $fileds[3]";	
-	@tokens = split (/ /, $line3a);
-	@myregions = split (/\./, $tokens[0]);
-	print "Regions: $myregions[1]\n");
-	print "Start Key: $tokens[1]\n");
-	print "End Key: $tokens[3]\n");
-}
+ 
+print "\# Written by Weiping He\n";
+ 
 
 
 
