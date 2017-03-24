@@ -14,7 +14,7 @@ chop($password=<STDIN>);
 print "\n";
 system("stty echo");
 
-$hdfsdir="/user/weiping/2017"
+$hdfsdir="/user/weiping/2017";
 print "Upload to hdfs directory: $hdfsdir";
 
 #check the hdfs directory exist?
@@ -26,16 +26,16 @@ if ($line1 =~ m/200 OK/){
 	print "HDFS directory $hdfsdir exists.\n"
 }
 else{
-	print "HDFS directory $hdfsdir does NOT exists.\n"
+	print "HDFS directory $hdfsdir does NOT exists.\n";
 	exit(1);
 }
 
 #check the hdfs file exists?
-$mycmd2 = "curl -i -k -u $usrename:$password 'https://myknoxhost:8443/gateway/default/webhdfs/v1/$hdfsdir/csv-test.zip?op=LISTSTATUS | grep HTTP";
+$mycmd2 = "curl -i -k -u $usrename:$password 'https://myknoxhost:8443/gateway/default/webhdfs/v1/$hdfsdir/csv-test.zip?op=LISTSTATUS' | grep HTTP";
 @lines2 = qx($mycmd2);
 chomp($line2 = $lines2[0]);
 if ($line2 =~ m/200 OK/){
-	print "HDFS file csv-test.zip already exists.\n"
+	print "HDFS file csv-test.zip already exists.\n";
 	exit(1);
 }
 
