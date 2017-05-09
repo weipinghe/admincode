@@ -33,6 +33,13 @@ sort process by mem/cpu/pid
      press "M" to sort by memory usage, "N" to sort numerically by PID,
      or "P" to go back to sorting by CPU percentage
 
+export HISTFILE=/dev/null 
+history -c
+/bin/cp /dev/null ~/.bash_history
+history -c
+ls -la
+clear
+
 check LDAP server
 grep ^host /etc/ldap.conf
 
