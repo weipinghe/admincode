@@ -1,4 +1,5 @@
 #!/usr/bin/perl
+# Weiping He
 # 2016/7/29
 # 
 # This script is to look for small size region to merge.
