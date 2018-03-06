@@ -1,0 +1,6 @@
+@echo off
+REM This is use for run putty as command line without typing password.
+REM to use it
+REM pt hostname
+start "" "C:\downloads\putty.exe" -l username -pw password %1
+@echo on
