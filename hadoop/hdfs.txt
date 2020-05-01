@@ -10,3 +10,8 @@ hdfs dfs -setrep <filename>
 [root@adc19 export]# df -h /hdfsmount
 Filesystem            Size  Used Avail Use% Mounted on
 192.168.1.2:/         25T  2.4T   22T  10% /hdfsmount
+
+CREATE EXTERNAL TABLE salaries ( gender string, age int, salary double, zip int ) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' LOCATION '/user/hive/warehouse/salaries';
+
+load data inpath '/home/hdfs/salaries.csv' overwrite into table salaries ;
+ 
