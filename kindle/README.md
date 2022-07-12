@@ -29,6 +29,23 @@ java -cp "C:\Kindle\briss-0.14\*.jar" -jar "C:\Kindle\briss-0.14\briss-0.14.jar"
 -s D:\tempbooks\pthon-AI-v1.pdf -d D:\tempbooks\pthon-AI-v3.pdf
 ```
 
+Note, if there is no rotation, the split command should be
+```
+java -cp "C:\Kindle\briss-0.14\*.jar" -jar "C:\Kindle\briss-0.14\briss-0.14.jar" ^
+-c 0/0.5/0/0,0/0/0/0.5:0/0.5/0/0,0/0/0/0.5:0/0.5/0/0,0/0/0/0.5  ^
+-s Parabolas.png.pdf -d b5_1_Parabolas.pdf
+```
+e.g.
+```
+for %f in (*.pdf) do java -cp "C:\software\briss-0.0.14.jar" -jar "C:\software\briss-0.0.14.jar" ^
+-c 0/0.5/0/0,0/0/0/0.5:0/0.5/0/0,0/0/0/0.5 ^
+-s "%f" -d ".\kindle\%f"
+
+for %f in (*.pdf) do java -cp "C:\Kindle\briss-0.14\*.jar" -jar "C:\Kindle\briss-0.14\briss-0.14.jar" ^
+-c 0/0.5/0/0,0/0/0/0.5:0/0.5/0/0,0/0/0/0.5 ^
+-s "%f" -d ".\computer\%f"
+```
+
 Usage:
         briss [-s SOURCE] [-d DESTINATION] [-c CROPARGS]
 CROPARGS are in the format: part1_page1,part2_page1,...!part1_page2,part2_page2
