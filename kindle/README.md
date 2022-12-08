@@ -64,8 +64,13 @@ Step 4. Copy to Kindle DX and start to read!
 https://mirrors.dotsrc.org/pub/mirrors/exherbo/kindlegen_linux_2.6_i386_v2_9.tar.gz
 
 https://ia801700.us.archive.org/14/items/kindlegen/kindlegen
+
 English
+```
 kindlegen  test1.epub  -unicode -o test1.mobi
+```
 
 Chinese
+```
 kindlegen  test2.epub  -unicode -o test2.mobi
+```
