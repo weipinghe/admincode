@@ -11,3 +11,6 @@
 5. in tools, check "save changes"
 
 refer https://tiddlywiki.com/
+
+Update 
+On 14th November 2017 Mozilla released Firefox 57, a major new version with many improvements and security enhancements. **However, in amongst those improvements are some fundamental changes to Firefox's security model with the unfortunate effect of making it impossible for TiddlyFox to function**.
