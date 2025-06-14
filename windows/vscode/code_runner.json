@@ -1,0 +1,10 @@
+{
+    "python.defaultInterpreterPath": "C:\\python\\python",
+    "workbench.colorTheme": "Winter is Coming (Dark Blue)",
+    "code-runner.defaultLanguage": "python",
+    "code-runner.saveFileBeforeRun": true,
+    "code-runner.clearPreviousOutput": true,
+    "code-runner.executorMap": {
+    "python": "C:\\python\\python -u $fullFileName"    
+    }
+}
